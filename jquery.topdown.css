@@ -1,0 +1,35 @@
+
+/**
+ * jQuery Topdown Plugin
+ * 
+ * @author Bala Clark
+ * */
+
+#td_container, #td_container div, #td_container p { margin: 0; padding: 0; }
+
+#td_container { 
+	cursor: pointer;
+}
+
+#td_container #td_shadow { height: 10px; background: url(shadow.png) repeat-x; }
+
+#td_container #td_message {
+	text-align: center;
+	margin:0; padding: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+	
+#td_container.notification #td_message { background-color: #FFF6BF; }
+#td_container.notification #td_shadow { border-top: solid 1px #ffe88a; }
+
+#td_container.success #td_message { background-color: #E6EFC2; }
+#td_container.success #td_shadow { border-top: solid 1px #C6D880; }
+
+#td_container.error #td_message { background-color: #fecab8; }
+#td_container.error #td_shadow { border-top: solid 1px #febda7; }
+
+/* IE6 :( */
+
+*html #td_container { position: absolute; }
+*html #td_container #td_shadow { display: none; } /* png fixes are so 2008 */

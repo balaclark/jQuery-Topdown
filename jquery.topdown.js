@@ -27,7 +27,7 @@
 
 (function($) {
 	
-	var container, container_height, options;
+	var options, container, container_height;
 	
 	$.fn.topdown = function(opts) {
 
@@ -35,6 +35,7 @@
 		soptions = $.extend(defaults, opts);
 
 		return this.each(function() {
+		
 			$(this).hide();
 
 			if (options.html)
@@ -45,7 +46,7 @@
 	}
 	
 	$.topdown = function(text, opts) {
-
+	
 		var defaults = {
 			style: "notification",
 			autoWidth: false,
@@ -61,12 +62,12 @@
 		};
 
 		options = $.extend(defaults, opts);
-
+		
+		$("#" + options.container_id).remove(); // remove any existing notifications
+		
 		// reset easing to default if chosen easing method is not found
 		if (typeof($.easing[options.easeIn]) !== 'function') { options.easeIn = "swing"; }
 		if (typeof($.easing[options.easeOut]) !== 'function') { options.easeOut = "swing"; }
-
-		$("#" + options.container_id).remove(); // remove any existing notifications
 
 		// append message bar ------------------------------------------------------
 

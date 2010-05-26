@@ -141,14 +141,15 @@
 		// fade out ----------------------------------------------------------------
 
 		if (options.sticky !== true) {
-
+			
 			// fade out after the given life
-			var hover_timer, timer = setTimeout(function(){ $.topdown.slide_up; }, options.life);
+			var hover_timer;
+			var timer = setTimeout(function(){ $.topdown.slide_up(); }, options.life);
 			
 			// pause fade out on hover
 			container.hover(
 				function() { clearTimeout(timer); },
-				function() { hover_timer = setTimeout(function(){ $.topdown.slide_up; }, options.speed); }
+				function() { hover_timer = setTimeout(function(){ $.topdown.slide_up(); }, options.speed); }
 			);
 		}
 
@@ -163,7 +164,7 @@
 			}
 			
 			// slide down immediately
-			$.topdown.slide_up;
+			$.topdown.slide_up();
 		});
 
 		return this;

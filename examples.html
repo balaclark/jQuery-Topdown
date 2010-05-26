@@ -128,6 +128,31 @@
 				background-color: #fff;
 			}
 			
+			#download { overflow: auto }
+			
+			#download a {
+				display: block;
+				float: left;
+				padding: 10px;
+				margin-right: 3px;
+				text-decoration: none;
+				color: #111;
+			}
+			
+			#download a.zip {
+				color: #384211;
+				background: #E6EFC2;
+				background: -moz-linear-gradient(top, #E6EFC2, #D6DEB4 100%);  
+				background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E6EFC2), to(#D6DEB4));
+				border: solid 1px #d3e19d;
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+			}
+			
+			#download a.zip:hover { color: #57661a }
+			#download a.github:hover { color: #555 }
+			
 			pre {
 				border: dashed 1px #aaa;
 				padding: 10px;
@@ -143,7 +168,7 @@
 	<body>
 		
 		<div id="wrapper">
-				
+			
 			<h1>Topdown</h1>
 			
 			<ul id="menu">
@@ -153,8 +178,15 @@
 				<li><a href="#issues">Issues</a></li>
 			</ul>
 			
-			<p>Topdown is a simple &amp; flexible notification system for jQuery. Hover over the message to stop 
-			it from hiding, click to hide immediately.</p>
+			<p>
+				Topdown is a simple &amp; flexible notification system for jQuery. Hover over the message to stop 
+				it from hiding, click to hide immediately.
+			</p>
+			
+			<p id="download">
+				<a href="http://github.com/balaclark/jQuery-Topdown/zipball/master" class="zip">download zip</a> 
+				<a href="http://github.com/balaclark/jQuery-Topdown" class="github">or browse source on github</a>
+			</p>
 			
 			<h2 id="options">Options</h2>
 			
@@ -173,27 +205,14 @@ easeIn: "swing"
 easeOut: "swing"</pre>
 			
 			<h2 id="examples">Examples</h2>
-			<!--
-			<ul>
-				<li><a href="#style">style: "notification"</a></li>
-				<li><a href="#autoWidth">autoWidth: false</a></li>
-				<li>speed: 200</li>
-				<li>life: 2000</li>
-				<li><a href="#sticky">sticky: false</a></li>
-				<li><a href="#url">url: false</a></li>
-				<li>container_id: "td_container"</li>
-				<li><a href="#onClose">onClose: false</a></li>
-				<li><a href="#color">color: false</a></li>
-				<li><a href="#easing">easeIn: "swing"</a></li>
-				<li><a href="#easing">easeOut: "swing"</a></li>
-			</ul>
-			-->
+			
 			<div>
 				
 				<h4>Default configuration</h4>
 				
+				<pre>$.topdown("normal notification");</pre> 
+				
 				<p> 
-					<pre>$.topdown("normal notification");</pre> 
 					<button id="msg1">run</button> 
 				</p>
 				<p>
@@ -207,9 +226,9 @@ easeOut: "swing"</pre>
 					Want to use text / HTML that is already in the DOM? You can use the
 					jQuery syntax you are used to. If you want to strip out any html formatting
 					and just keep the text, pass in the "html: false" option.
-					
-					<pre>$("#htmlmsg").topdown();</pre>
 				</p>
+				
+				<pre>$("#htmlmsg").topdown();</pre>
 			
 				<p class="htmlmsg"><span style="color:blue">This</span> <span style="text-decoration:underline">is</span> some <em>formatted</em> <strong>text</strong>.</p>
 				
@@ -223,8 +242,11 @@ easeOut: "swing"</pre>
 				<p>
 					Topdown comes with three default styles, custom styles can be created 
 					in CSS and the class name passed here.
-					
-					<pre>$.topdown("notification", { style: "notification" });</pre>
+				</p>
+				
+				<pre>$.topdown("notification", { style: "notification" });</pre>
+				
+				<p>
 					<label for="style">Style: </label>
 					<select name="style" id="style">
 						<option>notification</option>
@@ -233,9 +255,14 @@ easeOut: "swing"</pre>
 					</select>
 					<button id="msg5">run</button> 
 				</p>
+				
 				<p>
 					Instead of CSS theming, custom solid colours can be passed:
-					<pre>$.topdown("custom colour =)", { color: "#bbcdf2" });</pre>
+				</p>
+				
+				<pre>$.topdown("custom colour =)", { color: "#bbcdf2" });</pre>
+				
+				<p>
 					<label for="name="custom-colour">Colour: </label>
 					<input name="custom-colour" id="custom-colour" value="#bbcdf2" size="7" />
 					<button id="msg13">run</button>
@@ -246,7 +273,9 @@ easeOut: "swing"</pre>
 				<p>
 					Sticky notifications don't disappear, they stick around until they 
 					are clicked on.
-					 
+				</p>
+				
+				<p>
 					<pre>$.topdown("normal notification", { sticky: true });</pre> 
 					<button id="msg2">run</button> 
 				</p>
@@ -255,8 +284,11 @@ easeOut: "swing"</pre>
 				
 				<p>
 					Notifications don't have to be 100% width.
-					 
-					<pre>$.topdown("this one isn't 100% width", { autoWidth: true });</pre> 
+				</p>
+				
+				<pre>$.topdown("this one isn't 100% width", { autoWidth: true });</pre> 
+				
+				<p>
 					<button id="msg14">run</button> 
 				</p>
 				
@@ -264,8 +296,11 @@ easeOut: "swing"</pre>
 				
 				<p>
 					In URL mode, the notification bar becomes a clickable link.
-					
-					<pre>$.topdown("click to go to google.com", { url: "http://www.google.com" });</pre>
+				</p>
+				
+				<pre>$.topdown("click to go to google.com", { url: "http://www.google.com" });</pre>
+				
+				<p>
 					<button id="msg3">run</button>
 				</p>
 				
@@ -275,13 +310,15 @@ easeOut: "swing"</pre>
 					Run a custom function when the notification is closed. This can
 					also be used to chain notifications by passing another $.topdown 
 					call into the onClose event.
-					
+				</p>
+				
 <pre>$.topdown("this one has an onClose event", { 
 	onClose: function() { 
 		alert("callback"); 
 	} 
 });</pre>
-	
+				
+				<p>
 					<button id="msg11">run</button> 
 				</p>
 				
@@ -290,7 +327,7 @@ easeOut: "swing"</pre>
 				<p>
 					Topdown supports the extra easing modes offered by the jQuery Easing
 					plugin &amp; jQuery UI
-				
+				</p>
 				
 <pre>$.topdown("custom easing via the easing plugin / jquery ui", {
 	easeIn: "easeOutBounce",
@@ -298,6 +335,7 @@ easeOut: "swing"</pre>
 	speed: 800
 });</pre>
 				
+				<p>
 					<button id="msg12">run</button> 
 				</p>
 			

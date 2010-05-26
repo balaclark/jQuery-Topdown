@@ -67,13 +67,13 @@
 
 		// append message bar ------------------------------------------------------
 
-		var html = "<div id='" + options.container_id + "' style='display:none'>";
-		html += "<p id='td_message'>" + text + "</p>";
-		html += "<div id='td_shadow'>&nbsp;</div>";
-		html += "</div>";
-
-		$("body").append(html);
-
+		var html = "<div id='" + options.container_id + "' style='display:none'>"
+					+ "<p id='td_message'>" + text + "</p>"
+					+ "<div id='td_shadow'>&nbsp;</div>"
+				 + "</div>";
+		
+		$("body").prepend(html);
+		
 		var container = $("#" + options.container_id);
 		var container_height = container.height();
 
@@ -127,7 +127,7 @@
 
 			$(window).bind("load resize", position_notification);
 		}
-
+		
 		container
 			.addClass(options.style)
 			.show()
@@ -137,7 +137,7 @@
 			container.find("#td_message").css({ "background-color": options.color });
 			container.find("#td_shadow").css({ "border-top": options.color });
 		}
-
+		
 		// fixed position hack for ie6 :(, pretty horrible "solution" any improvements would be appreciated!
 		if ($.browser.msie && $.browser.version == "6.0") {
 			//var goback = $(window).scrollTop();
@@ -151,9 +151,8 @@
 		if (options.sticky !== true) {
 
 			// fade out after the given life
-			var timer = setTimeout(function(){ td_fadeout(); }, options.life);
-			var hover_timer;
-
+			var hover_timer, timer = setTimeout(function(){ td_fadeout(); }, options.life);
+			
 			// pause fade out on hover
 			container.hover(
 				function() { clearTimeout(timer); },
@@ -170,7 +169,7 @@
 				window.location = options.url;
 				return false;
 			}
-
+			
 			// fade out immediately
 			td_fadeout();
 		});

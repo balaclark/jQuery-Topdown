@@ -154,6 +154,7 @@
 			}
 			
 			#download a.zip:hover { color: #57661a }
+			
 			#download a.github:hover { color: #555 }
 			
 			pre {
@@ -165,6 +166,9 @@
 				padding: 3px 5px;
 				text-size: 1.5em;
 			}
+			
+			*html #blurb, *html #options { clear: both; }
+			*html #wrapper { width: 600px; }
 			
 		</style>
 	</head>
@@ -181,7 +185,7 @@
 				<li><a href="#issues">Issues</a></li>
 			</ul>
 			
-			<p>
+			<p id="blurb">
 				Topdown is a simple &amp; flexible notification system for jQuery. Hover over the message to stop 
 				it from hiding, click to hide immediately.
 			</p>

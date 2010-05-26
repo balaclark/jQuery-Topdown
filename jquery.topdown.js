@@ -32,7 +32,7 @@
 	$.fn.topdown = function(opts) {
 
 		var defaults = { html: true }
-		soptions = $.extend(defaults, opts);
+		options = $.extend(defaults, opts);
 
 		return this.each(function() {
 		

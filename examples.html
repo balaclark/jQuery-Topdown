@@ -19,6 +19,8 @@
 			
 			$(document).ready(function() {
 				
+				$("#shutdown").click(function() { $.topdown.slide_up(); });
+				
 				// custom options ----------------------------------------------
 				
 				$("#msg1").click(function(){
@@ -286,7 +288,15 @@ easeOut: "swing"</pre>
 				<pre>$.topdown("normal notification", { sticky: true });</pre> 
 				
 				<p>
+					Any notification can be closed programmatically by running the
+					following in your script.
+				</p>
+				
+				<pre>$.topdown.slide_up();</pre>
+				
+				<p>
 					<button id="msg2">run</button> 
+					<button id="shutdown">close</button> 
 				</p>
 				
 				<h4 id="autoWidth">autoWidth</h4>

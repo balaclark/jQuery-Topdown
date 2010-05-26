@@ -1,4 +1,5 @@
 /*
+
   $ Topdown v0.9
  
   License:
@@ -26,10 +27,12 @@
 
 (function($) {
 	
-	$.fn.topdown = function(opts){
+	var container, container_height, options;
+	
+	$.fn.topdown = function(opts) {
 
 		var defaults = { html: true }
-		var options = $.extend(defaults, opts);
+		soptions = $.extend(defaults, opts);
 
 		return this.each(function() {
 			$(this).hide();
@@ -40,7 +43,7 @@
 				$.topdown($(this).text(), options);
 		});
 	}
-
+	
 	$.topdown = function(text, opts) {
 
 		var defaults = {
@@ -57,7 +60,7 @@
 			easeOut: "swing"
 		};
 
-		var options = $.extend(defaults, opts);
+		options = $.extend(defaults, opts);
 
 		// reset easing to default if chosen easing method is not found
 		if (typeof($.easing[options.easeIn]) !== 'function') { options.easeIn = "swing"; }
@@ -74,19 +77,8 @@
 		
 		$("body").prepend(html);
 		
-		var container = $("#" + options.container_id);
-		var container_height = container.height();
-
-		// fadeout function --------------------------------------------------------
-
-		var td_fadeout = function() {
-			container.animate({ top: "-" + container_height	}, options.speed, options.easeOut, function() {
-				if (typeof(options.onClose) === "function") {
-					clearTimeout(hover_timer);
-					options.onClose();
-				}
-			});
-		}
+		container = $("#" + options.container_id);
+		container_height = container.height();
 
 		// fade in -----------------------------------------------------------------
 
@@ -151,12 +143,12 @@
 		if (options.sticky !== true) {
 
 			// fade out after the given life
-			var hover_timer, timer = setTimeout(function(){ td_fadeout(); }, options.life);
+			var hover_timer, timer = setTimeout(function(){ $.topdown.slide_up; }, options.life);
 			
 			// pause fade out on hover
 			container.hover(
 				function() { clearTimeout(timer); },
-				function() { hover_timer = setTimeout(function(){ td_fadeout(); }, options.speed); }
+				function() { hover_timer = setTimeout(function(){ $.topdown.slide_up; }, options.speed); }
 			);
 		}
 
@@ -170,11 +162,21 @@
 				return false;
 			}
 			
-			// fade out immediately
-			td_fadeout();
+			// slide down immediately
+			$.topdown.slide_up;
 		});
 
 		return this;
 	};
+	
+	$.topdown.slide_up = function() {
+	
+		container.animate({ top: "-" + container_height	}, options.speed, options.easeOut, function() {
+			if (typeof(options.onClose) === "function") {
+				clearTimeout(hover_timer);
+				options.onClose();
+			}
+		});
+	}
 	
 })(jQuery);

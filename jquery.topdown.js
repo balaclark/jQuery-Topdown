@@ -27,7 +27,7 @@ jQuery.fn.topdown = function(opts){
 jQuery.topdown = function(text, opts) {
 	
 	var defaults = {
-		type: "notification",
+		style: "notification",
 		autoWidth: false,
 		speed: 200,
 		life: 2000,
@@ -112,7 +112,7 @@ jQuery.topdown = function(text, opts) {
 	}
 	
 	container
-		.addClass(options.type)
+		.addClass(options.style)
 		.show()
 		.animate({ top: 0 }, options.speed, options.easeIn);
 	

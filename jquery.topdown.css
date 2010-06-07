@@ -15,9 +15,10 @@
 
 #td_container #td_message {
 	text-align: center;
-	margin:0; padding: 10px;
+	margin:0; padding: 2px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
+	color: #000;
 }
 	
 #td_container.notification #td_message { background-color: #FFF6BF; }

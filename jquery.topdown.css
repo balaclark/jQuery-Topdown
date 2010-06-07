@@ -9,13 +9,14 @@
 
 #td_container { 
 	cursor: pointer;
+	z-index: 500000;
 }
 
 #td_container #td_shadow { height: 10px; background: url(shadow.png) repeat-x; }
 
 #td_container #td_message {
 	text-align: center;
-	margin:0; padding: 2px;
+	margin:0; padding: 2px 10px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	color: #000;
